@@ -6,15 +6,15 @@ Resource                    ../services.robot
 Dado que eu faça uma requisição GET na API Deck of Cards
     ${response}             GET on Session                      ${alias}               url=${baseurl}new/
     Set Test Variable       ${response}
-    ${remaining}            Get Value From Json                 ${response.json()}      $.remaining
+    ${remaining}            Get Value From Json                 ${response.json()}     $.remaining
     Set Global Variable     ${remaining}
     Log                     ${remaining}
 
 Dado que eu faça uma requisição GET na API Deck of Cards incorreta
-    ${response}             GET on Session                      ${alias}               url=${baseurl}old/        expected_status=404
+    ${response}             GET on Session                      ${alias}               url=${baseurl}old/                    expected_status=404
     Set Test Variable       ${response}
-    ${success}            Get Value From Json                 ${response.json()}      $.success
-    ${error}            Get Value From Json                 ${response.json()}      $.error
+    ${success}              Get Value From Json                 ${response.json()}      $.success
+    ${error}                Get Value From Json                 ${response.json()}      $.error
     Set Global Variable     ${success} 
     Set Global Variable     ${error} 
     Log                     ${success} 
