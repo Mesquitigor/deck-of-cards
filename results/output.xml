@@ -1,103 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20221117 20:28:39.817" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20221121 19:26:22.766" rpa="false" schemaversion="3">
 <suite id="s1" name="Deckofcards" source="C:\Users\higor_mesquita\Documents\HST\PDI\2_PDI\Deckofcards">
 <suite id="s1-s1" name="Tests" source="C:\Users\higor_mesquita\Documents\HST\PDI\2_PDI\Deckofcards\tests">
-<suite id="s1-s1-s1" name="Abrandnewdeck Tc" source="C:\Users\higor_mesquita\Documents\HST\PDI\2_PDI\Deckofcards\tests\abrandnewdeck_tc.robot">
+<suite id="s1-s1-s1" name="Shufflethecards Tc" source="C:\Users\higor_mesquita\Documents\HST\PDI\2_PDI\Deckofcards\tests\shufflethecards_tc.robot">
 <kw name="Conexao com API" library="services" type="SETUP">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>${alias}</arg>
 <arg>${baseurl}</arg>
 <arg>disable_warnings=1</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221117 20:28:40.047" level="INFO">Creating Session using : alias=deckofcards, url=http://deckofcardsapi.com/api/deck/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221117 20:28:40.046" endtime="20221117 20:28:40.048"/>
+<msg timestamp="20221121 19:26:22.990" level="INFO">Creating Session using : alias=deckofcards, url=http://deckofcardsapi.com/api/deck/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221121 19:26:22.989" endtime="20221121 19:26:22.991"/>
 </kw>
-<status status="PASS" starttime="20221117 20:28:40.046" endtime="20221117 20:28:40.048"/>
+<status status="PASS" starttime="20221121 19:26:22.988" endtime="20221121 19:26:22.991"/>
 </kw>
-<test id="s1-s1-s1-t1" name="CT-01 - Validar a criação com sucesso de um novo deck de cartas" line="7">
-<kw name="Dado que eu faça uma requisição GET na API Deck of Cards" library="abrandnewdeck_steps">
+<test id="s1-s1-s1-t1" name="CT-01 - Validar embaralhar as cartas com sucesso em quantidade de decks" line="7">
+<kw name="Dado que eu faça uma requisição GET na API Deck of Cards shuffle cards com &quot;5&quot; decks" library="shufflethecards_steps" sourcename="Dado que eu faça uma requisição GET na API Deck of Cards shuffle cards com &quot;${many_shuffle_decks}&quot; decks">
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${response}</var>
 <arg>${alias}</arg>
-<arg>url=${baseurl}new/</arg>
+<arg>url=${baseurl}new/shuffle/?deck_count=${many_shuffle_decks}</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221117 20:28:41.335" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/new/ (redirected) 
- path_url=/api/deck/new/ 
+<msg timestamp="20221121 19:26:24.470" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=5 (redirected) 
+ path_url=/api/deck/new/shuffle/?deck_count=5 
  headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20221117 20:28:41.337" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/new/ 
+<msg timestamp="20221121 19:26:24.471" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=5 
  status=200, reason=OK 
- headers={'Date': 'Thu, 17 Nov 2022 23:28:41 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=4ksPV8ZezRaj5cvIs22YWXGurVMA0hw7TgXWYjSDX1fB57v8%2Fryy7bLrjKZH0noROWPplBXW8No4gisnue%2Fbm6sfsY9eZ86kXD4o%2F1sK43JkN4j39kLkyn18ecXEt9u5LxOVEGA%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '76bc3e7ed9d200fb-GRU', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "t65grcxxk7uf", "remaining": 52, "shuffled": false} 
+ headers={'Date': 'Mon, 21 Nov 2022 22:26:24 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=8lBeZ4EG7smTjciPSt%2FoiyLm9TAsp5GPFojbC6Uo0PnzzcoWOsQKX7PNsfMFPgtJqKLZBkTeStSilaBxd9vfkULhM4Y6QSTscJaGJEp%2F5lilaXTg74wP9J80t4vSiM5mp4GOTCA%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '76dcd8c2ac4625ae-GIG', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
+ body={"success": true, "deck_id": "bk48ylvavssr", "remaining": 260, "shuffled": true} 
  </msg>
-<msg timestamp="20221117 20:28:41.338" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221117 20:28:40.051" endtime="20221117 20:28:41.339"/>
+<msg timestamp="20221121 19:26:24.473" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221121 19:26:22.994" endtime="20221121 19:26:24.474"/>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221117 20:28:41.342" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221117 20:28:41.340" endtime="20221117 20:28:41.344"/>
+<msg timestamp="20221121 19:26:24.476" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221121 19:26:24.475" endtime="20221121 19:26:24.477"/>
 </kw>
 <kw name="Get Value From Json" library="JSONLibrary">
 <var>${remaining}</var>
 <arg>${response.json()}</arg>
 <arg>$.remaining</arg>
 <doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221117 20:28:41.373" level="INFO">${remaining} = [52]</msg>
-<status status="PASS" starttime="20221117 20:28:41.344" endtime="20221117 20:28:41.374"/>
+<msg timestamp="20221121 19:26:24.508" level="INFO">${remaining} = [260]</msg>
+<status status="PASS" starttime="20221121 19:26:24.478" endtime="20221121 19:26:24.508"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${remaining}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221117 20:28:41.376" level="INFO">${remaining} = [52]</msg>
-<status status="PASS" starttime="20221117 20:28:41.374" endtime="20221117 20:28:41.378"/>
+<msg timestamp="20221121 19:26:24.510" level="INFO">${remaining} = [260]</msg>
+<status status="PASS" starttime="20221121 19:26:24.509" endtime="20221121 19:26:24.511"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${remaining}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221117 20:28:41.379" level="INFO">[52]</msg>
-<status status="PASS" starttime="20221117 20:28:41.378" endtime="20221117 20:28:41.380"/>
+<kw name="Evaluate" library="BuiltIn">
+<var>${many_shuffle_decks}</var>
+<arg>int(${many_shuffle_decks}*52)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221121 19:26:24.512" level="INFO">${many_shuffle_decks} = 260</msg>
+<status status="PASS" starttime="20221121 19:26:24.511" endtime="20221121 19:26:24.513"/>
 </kw>
-<status status="PASS" starttime="20221117 20:28:40.051" endtime="20221117 20:28:41.380"/>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${many_shuffle_decks}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221121 19:26:24.514" level="INFO">${many_shuffle_decks} = 260</msg>
+<status status="PASS" starttime="20221121 19:26:24.513" endtime="20221121 19:26:24.515"/>
+</kw>
+<status status="PASS" starttime="20221121 19:26:22.994" endtime="20221121 19:26:24.515"/>
 </kw>
 <kw name="Quando eu verificar que o response tem status &quot;200&quot; e &quot;OK&quot;" library="abrandnewdeck_steps" sourcename="Quando eu verificar que o response tem status &quot;${sc}&quot; e &quot;${s}&quot;">
 <kw name="Status Should Be" library="RequestsLibrary">
 <arg>${sc}</arg>
 <arg>${response}</arg>
 <doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20221117 20:28:41.383" endtime="20221117 20:28:41.384"/>
+<status status="PASS" starttime="20221121 19:26:24.519" endtime="20221121 19:26:24.520"/>
 </kw>
-<status status="PASS" starttime="20221117 20:28:41.381" endtime="20221117 20:28:41.384"/>
+<status status="PASS" starttime="20221121 19:26:24.518" endtime="20221121 19:26:24.520"/>
 </kw>
-<kw name="Então devo ter sucesso nas respostas dos campos" library="abrandnewdeck_steps">
+<kw name="Então devo ter sucesso nas respostas dos campos do shuffle cards" library="shufflethecards_steps">
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>${response.json()['success']}</arg>
 <arg>${True}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221117 20:28:41.386" endtime="20221117 20:28:41.388"/>
+<status status="PASS" starttime="20221121 19:26:24.522" endtime="20221121 19:26:24.524"/>
 </kw>
 <kw name="Length Should Be" library="BuiltIn">
 <arg>${response.json()['deck_id']}</arg>
 <arg>12</arg>
 <doc>Verifies that the length of the given item is correct.</doc>
-<msg timestamp="20221117 20:28:41.388" level="INFO">Length is 12</msg>
-<status status="PASS" starttime="20221117 20:28:41.388" endtime="20221117 20:28:41.390"/>
+<msg timestamp="20221121 19:26:24.526" level="INFO">Length is 12</msg>
+<status status="PASS" starttime="20221121 19:26:24.524" endtime="20221121 19:26:24.527"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>${response.json()['shuffled']}</arg>
-<arg>${False}</arg>
+<arg>${True}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221117 20:28:41.390" endtime="20221117 20:28:41.392"/>
+<status status="PASS" starttime="20221121 19:26:24.528" endtime="20221121 19:26:24.529"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.json()}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221117 20:28:41.394" level="INFO">{'success': True, 'deck_id': 't65grcxxk7uf', 'remaining': 52, 'shuffled': False}</msg>
-<status status="PASS" starttime="20221117 20:28:41.392" endtime="20221117 20:28:41.395"/>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${response.json()['remaining']}</arg>
+<arg>${many_shuffle_decks}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221121 19:26:24.530" endtime="20221121 19:26:24.532"/>
 </kw>
-<status status="PASS" starttime="20221117 20:28:41.385" endtime="20221117 20:28:41.396"/>
+<status status="PASS" starttime="20221121 19:26:24.521" endtime="20221121 19:26:24.532"/>
 </kw>
 <kw name="E pegar o valor do campo deck_id" library="abrandnewdeck_steps">
 <kw name="Get Value From Json" library="JSONLibrary">
@@ -105,137 +112,229 @@
 <arg>${response.json()}</arg>
 <arg>$.deck_id</arg>
 <doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221117 20:28:41.436" level="INFO">${deck_id_new} = ['t65grcxxk7uf']</msg>
-<status status="PASS" starttime="20221117 20:28:41.399" endtime="20221117 20:28:41.437"/>
+<msg timestamp="20221121 19:26:24.572" level="INFO">${deck_id_new} = ['bk48ylvavssr']</msg>
+<status status="PASS" starttime="20221121 19:26:24.534" endtime="20221121 19:26:24.573"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${deck_id_new}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221117 20:28:41.438" level="INFO">${deck_id_new} = ['t65grcxxk7uf']</msg>
-<status status="PASS" starttime="20221117 20:28:41.437" endtime="20221117 20:28:41.439"/>
+<msg timestamp="20221121 19:26:24.576" level="INFO">${deck_id_new} = ['bk48ylvavssr']</msg>
+<status status="PASS" starttime="20221121 19:26:24.574" endtime="20221121 19:26:24.577"/>
 </kw>
-<status status="PASS" starttime="20221117 20:28:41.397" endtime="20221117 20:28:41.439"/>
+<status status="PASS" starttime="20221121 19:26:24.533" endtime="20221121 19:26:24.577"/>
 </kw>
-<status status="PASS" starttime="20221117 20:28:40.049" endtime="20221117 20:28:41.440"/>
+<status status="PASS" starttime="20221121 19:26:22.992" endtime="20221121 19:26:24.578"/>
 </test>
-<test id="s1-s1-s1-t2" name="CT-02 - Validar a criação sem sucesso de um novo deck de cartas" line="13">
-<kw name="Dado que eu faça uma requisição GET na API Deck of Cards incorreta" library="abrandnewdeck_steps">
+<test id="s1-s1-s1-t2" name="CT-02 - Validar embaralhar as cartas sem sucesso com url errada" line="13">
+<kw name="Dado que eu faça uma requisição GET na API Deck of Cards incorreta do shuffle cards" library="shufflethecards_steps">
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${response}</var>
 <arg>${alias}</arg>
-<arg>url=${baseurl}old/</arg>
+<arg>url=${baseurl}old/shuffle/?deck_count=${number_of_decks}</arg>
 <arg>expected_status=404</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221117 20:28:41.878" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/old/ (redirected) 
- path_url=/api/deck/old/ 
+<msg timestamp="20221121 19:26:25.063" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/old/shuffle/?deck_count=5 (redirected) 
+ path_url=/api/deck/old/shuffle/?deck_count=5 
  headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20221117 20:28:41.878" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/old/ 
+<msg timestamp="20221121 19:26:25.064" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/old/shuffle/?deck_count=5 
  status=404, reason=Not Found 
- headers={'Date': 'Thu, 17 Nov 2022 23:28:41 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=I0zMnyaNysy7Mm0rBtAljo95MOEwr9wkiN9aFvnM0M0v3dOPoj%2B2w8sgc8fWaGJeTPhK%2FIFqi0JkFAKCNPArc2kqDXJLM3OkmcTbXe%2BjhcA3zGibfk8bf2q8%2BONwWHXTNY23WPk%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '76bc3e848bc700fb-GRU', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
+ headers={'Date': 'Mon, 21 Nov 2022 22:26:25 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=VmwPP9ONydJYopONzUzTNO2q3MAGgmHfmRvOsqNZSrepn8TUI6xA%2BOhnWhrDlET8nXa%2B0AFPYOeZtHusxWLZBeQEenCpBsIjlsVm2Of98nun%2Bwz0KpB%2F1t%2B2BGFFaAJb4Y3qdf0%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '76dcd8c93fa525ae-GIG', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
  body={"success": false, "error": "Deck ID does not exist."} 
  </msg>
-<msg timestamp="20221117 20:28:41.880" level="INFO">${response} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20221117 20:28:41.449" endtime="20221117 20:28:41.881"/>
+<msg timestamp="20221121 19:26:25.067" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20221121 19:26:24.585" endtime="20221121 19:26:25.069"/>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221117 20:28:41.883" level="INFO">${response} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20221117 20:28:41.882" endtime="20221117 20:28:41.884"/>
+<msg timestamp="20221121 19:26:25.071" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20221121 19:26:25.070" endtime="20221121 19:26:25.073"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${remaining}</var>
+<arg>${response.json()}</arg>
+<arg>$.remaining</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20221121 19:26:25.096" level="INFO">${remaining} = []</msg>
+<status status="PASS" starttime="20221121 19:26:25.073" endtime="20221121 19:26:25.097"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${remaining}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221121 19:26:25.099" level="INFO">${remaining} = []</msg>
+<status status="PASS" starttime="20221121 19:26:25.097" endtime="20221121 19:26:25.100"/>
 </kw>
 <kw name="Get Value From Json" library="JSONLibrary">
 <var>${success}</var>
 <arg>${response.json()}</arg>
 <arg>$.success</arg>
 <doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221117 20:28:41.911" level="INFO">${success} = [False]</msg>
-<status status="PASS" starttime="20221117 20:28:41.885" endtime="20221117 20:28:41.912"/>
+<msg timestamp="20221121 19:26:25.126" level="INFO">${success} = [False]</msg>
+<status status="PASS" starttime="20221121 19:26:25.101" endtime="20221121 19:26:25.127"/>
 </kw>
 <kw name="Get Value From Json" library="JSONLibrary">
 <var>${error}</var>
 <arg>${response.json()}</arg>
 <arg>$.error</arg>
 <doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221117 20:28:41.934" level="INFO">${error} = ['Deck ID does not exist.']</msg>
-<status status="PASS" starttime="20221117 20:28:41.912" endtime="20221117 20:28:41.934"/>
+<msg timestamp="20221121 19:26:25.148" level="INFO">${error} = ['Deck ID does not exist.']</msg>
+<status status="PASS" starttime="20221121 19:26:25.128" endtime="20221121 19:26:25.148"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${success}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221117 20:28:41.935" level="INFO">${success} = [False]</msg>
-<status status="PASS" starttime="20221117 20:28:41.935" endtime="20221117 20:28:41.936"/>
+<msg timestamp="20221121 19:26:25.152" level="INFO">${success} = [False]</msg>
+<status status="PASS" starttime="20221121 19:26:25.150" endtime="20221121 19:26:25.153"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${error}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221117 20:28:41.937" level="INFO">${error} = ['Deck ID does not exist.']</msg>
-<status status="PASS" starttime="20221117 20:28:41.936" endtime="20221117 20:28:41.938"/>
+<msg timestamp="20221121 19:26:25.154" level="INFO">${error} = ['Deck ID does not exist.']</msg>
+<status status="PASS" starttime="20221121 19:26:25.153" endtime="20221121 19:26:25.155"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${success}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221117 20:28:41.940" level="INFO">[False]</msg>
-<status status="PASS" starttime="20221117 20:28:41.938" endtime="20221117 20:28:41.941"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${error}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221117 20:28:41.943" level="INFO">['Deck ID does not exist.']</msg>
-<status status="PASS" starttime="20221117 20:28:41.942" endtime="20221117 20:28:41.945"/>
-</kw>
-<status status="PASS" starttime="20221117 20:28:41.448" endtime="20221117 20:28:41.945"/>
+<status status="PASS" starttime="20221121 19:26:24.581" endtime="20221121 19:26:25.157"/>
 </kw>
 <kw name="Quando eu verificar que o response tem status &quot;404&quot; e &quot;Not Found&quot;" library="abrandnewdeck_steps" sourcename="Quando eu verificar que o response tem status &quot;${sc}&quot; e &quot;${s}&quot;">
 <kw name="Status Should Be" library="RequestsLibrary">
 <arg>${sc}</arg>
 <arg>${response}</arg>
 <doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20221117 20:28:41.948" endtime="20221117 20:28:41.949"/>
+<status status="PASS" starttime="20221121 19:26:25.159" endtime="20221121 19:26:25.160"/>
 </kw>
-<status status="PASS" starttime="20221117 20:28:41.946" endtime="20221117 20:28:41.949"/>
+<status status="PASS" starttime="20221121 19:26:25.158" endtime="20221121 19:26:25.160"/>
 </kw>
 <kw name="Então devo ter falha nas respostas dos campos" library="abrandnewdeck_steps">
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>${response.json()['success']}</arg>
 <arg>${false}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221117 20:28:41.951" endtime="20221117 20:28:41.952"/>
+<status status="PASS" starttime="20221121 19:26:25.161" endtime="20221121 19:26:25.162"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>${response.json()['error']}</arg>
 <arg>Deck ID does not exist.</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221117 20:28:41.953" endtime="20221117 20:28:41.954"/>
+<status status="PASS" starttime="20221121 19:26:25.163" endtime="20221121 19:26:25.164"/>
 </kw>
-<kw name="Log" library="BuiltIn">
+<status status="PASS" starttime="20221121 19:26:25.161" endtime="20221121 19:26:25.164"/>
+</kw>
+<status status="PASS" starttime="20221121 19:26:24.580" endtime="20221121 19:26:25.165"/>
+</test>
+<test id="s1-s1-s1-t3" name="CT-03 - Validar embaralhar as cartas sem sucesso com 21 decks" line="18">
+<kw name="Dado que eu faça uma requisição GET na API Deck of Cards shuffle cards com &quot;21&quot; decks sem sucesso" library="shufflethecards_steps" sourcename="Dado que eu faça uma requisição GET na API Deck of Cards shuffle cards com &quot;${many_shuffle_decks}&quot; decks sem sucesso">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>url=${baseurl}new/shuffle/?deck_count=${many_shuffle_decks}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20221121 19:26:25.701" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=21 (redirected) 
+ path_url=/api/deck/new/shuffle/?deck_count=21 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20221121 19:26:25.703" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=21 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 21 Nov 2022 22:26:25 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=3O53%2BkFi6rDfIfUdIb5pCQMOpDMrk3NnZkF2T8hsmKHt3HpDvo4mFXDa3WA1gXmKfeeiNbKPkEANub1VoWapeKjYZc8dSnKDWBWU%2BysXrkGiOafrPo8Jk3z8F%2FUd0obyM9PxV%2B4%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '76dcd8cd5ec025ae-GIG', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
+ body={"success": false, "error": "The max number of Decks is 20."} 
+ </msg>
+<msg timestamp="20221121 19:26:25.706" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221121 19:26:25.171" endtime="20221121 19:26:25.708"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20221121 19:26:25.709" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221121 19:26:25.708" endtime="20221121 19:26:25.710"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${remaining}</var>
 <arg>${response.json()}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221117 20:28:41.955" level="INFO">{'success': False, 'error': 'Deck ID does not exist.'}</msg>
-<status status="PASS" starttime="20221117 20:28:41.954" endtime="20221117 20:28:41.956"/>
+<arg>$.remaining</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20221121 19:26:25.735" level="INFO">${remaining} = []</msg>
+<status status="PASS" starttime="20221121 19:26:25.710" endtime="20221121 19:26:25.736"/>
 </kw>
-<status status="PASS" starttime="20221117 20:28:41.950" endtime="20221117 20:28:41.956"/>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${remaining}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221121 19:26:25.738" level="INFO">${remaining} = []</msg>
+<status status="PASS" starttime="20221121 19:26:25.737" endtime="20221121 19:26:25.739"/>
 </kw>
-<status status="PASS" starttime="20221117 20:28:41.444" endtime="20221117 20:28:41.958"/>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${success}</var>
+<arg>${response.json()}</arg>
+<arg>$.success</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20221121 19:26:25.763" level="INFO">${success} = [False]</msg>
+<status status="PASS" starttime="20221121 19:26:25.739" endtime="20221121 19:26:25.764"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${error}</var>
+<arg>${response.json()}</arg>
+<arg>$.error</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20221121 19:26:25.788" level="INFO">${error} = ['The max number of Decks is 20.']</msg>
+<status status="PASS" starttime="20221121 19:26:25.764" endtime="20221121 19:26:25.789"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${success}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221121 19:26:25.790" level="INFO">${success} = [False]</msg>
+<status status="PASS" starttime="20221121 19:26:25.789" endtime="20221121 19:26:25.791"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${error}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221121 19:26:25.792" level="INFO">${error} = ['The max number of Decks is 20.']</msg>
+<status status="PASS" starttime="20221121 19:26:25.791" endtime="20221121 19:26:25.793"/>
+</kw>
+<status status="PASS" starttime="20221121 19:26:25.170" endtime="20221121 19:26:25.793"/>
+</kw>
+<kw name="Quando eu verificar que o response tem status &quot;200&quot; e &quot;OK&quot;" library="abrandnewdeck_steps" sourcename="Quando eu verificar que o response tem status &quot;${sc}&quot; e &quot;${s}&quot;">
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>${sc}</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20221121 19:26:25.795" endtime="20221121 19:26:25.796"/>
+</kw>
+<status status="PASS" starttime="20221121 19:26:25.794" endtime="20221121 19:26:25.796"/>
+</kw>
+<kw name="Então devo ter falha de limite de cartas nas respostas dos campos" library="shufflethecards_steps">
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${response.json()['success']}</arg>
+<arg>${false}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221121 19:26:25.798" endtime="20221121 19:26:25.801"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${response.json()['error']}</arg>
+<arg>The max number of Decks is 20.</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221121 19:26:25.803" endtime="20221121 19:26:25.804"/>
+</kw>
+<status status="PASS" starttime="20221121 19:26:25.797" endtime="20221121 19:26:25.804"/>
+</kw>
+<status status="PASS" starttime="20221121 19:26:25.167" endtime="20221121 19:26:25.805"/>
 </test>
 <doc>Esse arquivo contém os cenários de teste da API pública Deck of Cards</doc>
-<status status="PASS" starttime="20221117 20:28:39.870" endtime="20221117 20:28:41.962"/>
+<status status="PASS" starttime="20221121 19:26:22.812" endtime="20221121 19:26:25.808"/>
 </suite>
-<status status="PASS" starttime="20221117 20:28:39.864" endtime="20221117 20:28:41.965"/>
+<status status="PASS" starttime="20221121 19:26:22.804" endtime="20221121 19:26:25.813"/>
 </suite>
-<status status="PASS" starttime="20221117 20:28:39.823" endtime="20221117 20:28:41.969"/>
+<status status="PASS" starttime="20221121 19:26:22.773" endtime="20221121 19:26:25.817"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="Deckofcards">Deckofcards</stat>
-<stat pass="2" fail="0" skip="0" id="s1-s1" name="Tests">Deckofcards.Tests</stat>
-<stat pass="2" fail="0" skip="0" id="s1-s1-s1" name="Abrandnewdeck Tc">Deckofcards.Tests.Abrandnewdeck Tc</stat>
+<stat pass="3" fail="0" skip="0" id="s1" name="Deckofcards">Deckofcards</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s1" name="Tests">Deckofcards.Tests</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s1-s1" name="Shufflethecards Tc">Deckofcards.Tests.Shufflethecards Tc</stat>
 </suite>
 </statistics>
 <errors>
