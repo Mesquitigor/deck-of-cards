@@ -9,12 +9,29 @@ CT-01 - Validar retirada de cartas com sucesso
     Dado que eu possua um deck
     Quando eu escolher uma quantidade "15" cartas
     E verificar que o response tem status "200" e "OK"
-    Então eu terei a quantidade "15" de cartas
+    Então eu terei a mesma quantidade de cartas no deck
+    E sucesso na retirada
+    E quantidade correta de carta restantes
 
-# CT-02 - Validar retirada de mais cartas do que existem no deck
+CT-02 - Validar retirada de mais cartas do que existem no deck
+    Dado que eu possua um deck
+    Quando eu escolher uma quantidade "70" cartas
+    E verificar que o response tem status "200" e "OK"
+    Então eu terei uma menor quantidade de cartas no deck
+    E falha na retirada
+    E quantidade nula de carta restantes
 
-# CT-03 - Validar retirada de cartas sem sucesso 
-    # Dado que eu possua um deck
-    # Quando eu escolher uma quantidade cartas superior ao total de cartas do deck
-    # E verificar que o response tem status "200" e "OK"
-    # Então eu terei a quantidade "15" de cartas
+CT-03 - Validar retirada de cartas sem sucesso
+    Dado que eu possua um deck
+    Quando eu escolher retirar cartas sem ter cartas no deck
+    E verificar que o response tem status "200" e "OK"
+    Então receberei uma mensagem de erro
+
+CT-04 - Validar retirada de cartas de um deck misturado
+    Dado que eu faça uma requisição GET na API Deck of Cards shuffle cards com "1" decks
+    E pegar o valor do campo deck_id
+    Quando eu escolher uma quantidade "15" cartas
+    E verificar que o response tem status "200" e "OK"
+    Então eu terei a mesma quantidade de cartas no deck
+    E sucesso na retirada
+    # E quantidade correta de carta restantes
