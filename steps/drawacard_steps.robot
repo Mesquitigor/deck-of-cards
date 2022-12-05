@@ -4,14 +4,15 @@ Resource                    ../services.robot
 
 *** Keywords ***
 #CT-01
-Quando eu escolher uma quantidade "${numero_de_cartas}" cartas
+Quando eu retirar uma quantidade "${numero_de_cartas}" cartas
     ${deck_id_new}          Evaluate                "".join(${deck_id_new})
     ${deck_id_new}          Remove String           ${deck_id_new}           [         ]
     ${response}             GET on Session          ${alias}                 url=${baseurl}${deck_id_new}/draw/?count=${numero_de_cartas}
     Set Test Variable       ${response}
     Set Global Variable     ${numero_de_cartas}
+    Set Test Variable       ${deck_id_new}
 
-Quando eu escolher retirar cartas sem ter cartas no deck
+Quando eu retirar cartas sem ter cartas no deck
     ${deck_id_new}          Evaluate                "".join(${deck_id_new})
     ${deck_id_new}          Remove String           ${deck_id_new}           [         ]
     ${response}             GET on Session          ${alias}                 url=${baseurl}${deck_id_new}/draw/?count=100

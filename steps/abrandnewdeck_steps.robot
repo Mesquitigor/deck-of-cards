@@ -31,4 +31,4 @@ Então devo ter falha nas respostas dos campos
 
 E pegar o valor do campo deck_id
     ${deck_id_new}          Get Value From Json                 ${response.json()}      $.deck_id
-    Set Test Variable     ${deck_id_new}
+    Set Test Variable       ${deck_id_new}

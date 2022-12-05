@@ -16,9 +16,13 @@ Resource       steps/shufflepiles_steps.robot
 Resource       steps/shufflethecards_steps.robot
 
 *** Variables ***
-${baseurl}          http://deckofcardsapi.com/api/deck/
-${alias}            deckofcards
-${number_of_decks}  5
+${baseurl}           http://deckofcardsapi.com/api/deck/
+${alias}             deckofcards
+${number_of_decks}   5
+${pile_name1}        pilha_de_higor1
+${pile_name2}        pilha_de_higor2
+${more_than_zero}    Evaluate        
+${cards_to_add}      AS
 
 *** Keywords ***
 Conexao com API
