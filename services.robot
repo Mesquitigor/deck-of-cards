@@ -3,7 +3,6 @@ Library         RequestsLibrary
 Library         JSONLibrary
 Library         String
 
-
 Resource       steps/abrandnewdeck_steps.robot
 Resource       steps/addingtopiles_steps.robot
 Resource       steps/apartialdeck_steps.robot
