@@ -1,940 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20221205 13:33:46.653" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20221206 17:43:59.738" rpa="false" schemaversion="3">
 <suite id="s1" name="Deckofcards" source="C:\Users\higor_mesquita\Documents\HST\PDI\2_PDI\Deckofcards">
 <suite id="s1-s1" name="Tests" source="C:\Users\higor_mesquita\Documents\HST\PDI\2_PDI\Deckofcards\tests">
-<suite id="s1-s1-s1" name="Addingtopiles Tc" source="C:\Users\higor_mesquita\Documents\HST\PDI\2_PDI\Deckofcards\tests\addingtopiles_tc.robot">
+<suite id="s1-s1-s1" name="Apartialdeck Tc" source="C:\Users\higor_mesquita\Documents\HST\PDI\2_PDI\Deckofcards\tests\apartialdeck_tc.robot">
 <kw name="Conexao com API" library="services" type="SETUP">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>${alias}</arg>
 <arg>${baseurl}</arg>
 <arg>disable_warnings=1</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221205 13:33:46.956" level="INFO">Creating Session using : alias=deckofcards, url=http://deckofcardsapi.com/api/deck/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221205 13:33:46.954" endtime="20221205 13:33:46.958"/>
+<msg timestamp="20221206 17:43:59.937" level="INFO">Creating Session using : alias=deckofcards, url=http://deckofcardsapi.com/api/deck/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221206 17:43:59.936" endtime="20221206 17:43:59.938"/>
 </kw>
-<status status="PASS" starttime="20221205 13:33:46.953" endtime="20221205 13:33:46.958"/>
+<status status="PASS" starttime="20221206 17:43:59.935" endtime="20221206 17:43:59.938"/>
 </kw>
-<test id="s1-s1-s1-t1" name="CT-01 - Validar adição com sucesso de cartas do deck a uma pilha" line="7">
-<kw name="Dado que eu possua um deck" library="shufflepiles_steps">
-<kw name="Dado que eu faça uma requisição GET na API Deck of Cards" library="abrandnewdeck_steps">
+<test id="s1-s1-s1-t1" name="CT-01 - Validar criação de um deck parcial com sucesso" line="7">
+<kw name="Dado que eu faça a criação de um deck parcial" library="apartialdeck_steps">
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${response}</var>
 <arg>${alias}</arg>
-<arg>url=${baseurl}new/</arg>
+<arg>url=${baseurl}new/shuffle/?cards=AS,2S,KS,AD,2D,KD,AC,2C,KC,AH,2H,KH</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:47.785" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/new/ (redirected) 
- path_url=/api/deck/new/ 
+<msg timestamp="20221206 17:44:01.103" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,KS,AD,2D,KD,AC,2C,KC,AH,2H,KH (redirected) 
+ path_url=/api/deck/new/shuffle/?cards=AS,2S,KS,AD,2D,KD,AC,2C,KC,AH,2H,KH 
  headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20221205 13:33:47.786" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/new/ 
+<msg timestamp="20221206 17:44:01.105" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,KS,AD,2D,KD,AC,2C,KC,AH,2H,KH 
  status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:47 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=GUGXY7f%2FQc4fKbt2KaphbOo3ZW7OHzB2Sapefl5fasCCZVFpxaVjIFt2muJfeRVbVKcQ1gjQBgvoDY0BTjAah4YdSZFFCrgc7wkXhymoxW4m9R4d4%2BlADnEnq9HSAANC1DaQZRnzKt%2BGemxK7YfK7HQ%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f816d715a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "diwbiowky94s", "remaining": 52, "shuffled": false} 
+ headers={'Date': 'Tue, 06 Dec 2022 20:44:01 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=rKU8xev15BtmHfmuqVtxhdSsn8byJ1YWVBVOiOYb52V3s8mfGva0TP0HIDr2AFALFvcw2OWAH6NycqfPvW8u9OkyWv2ooAO%2F8RBifBD%2Bsj7Lp04HFcHh6w8xUZVo7mhaQyEFXOI%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '7757db66cb1aa690-GRU', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
+ body={"success": true, "deck_id": "6yxp8lzmkgrl", "remaining": 12, "shuffled": true} 
  </msg>
-<msg timestamp="20221205 13:33:47.787" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:46.963" endtime="20221205 13:33:47.788"/>
+<msg timestamp="20221206 17:44:01.108" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221206 17:43:59.942" endtime="20221206 17:44:01.110"/>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:47.792" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:47.789" endtime="20221205 13:33:47.794"/>
+<msg timestamp="20221206 17:44:01.115" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221206 17:44:01.111" endtime="20221206 17:44:01.117"/>
 </kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${remaining_brandnew}</var>
-<arg>${response.json()}</arg>
-<arg>$.remaining</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221205 13:33:47.847" level="INFO">${remaining_brandnew} = [52]</msg>
-<status status="PASS" starttime="20221205 13:33:47.794" endtime="20221205 13:33:47.847"/>
+<status status="PASS" starttime="20221206 17:43:59.941" endtime="20221206 17:44:01.117"/>
 </kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${remaining_brandnew}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221205 13:33:47.849" level="INFO">${remaining_brandnew} = [52]</msg>
-<status status="PASS" starttime="20221205 13:33:47.848" endtime="20221205 13:33:47.850"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:46.963" endtime="20221205 13:33:47.850"/>
-</kw>
-<kw name="E pegar o valor do campo deck_id" library="abrandnewdeck_steps">
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${deck_id_new}</var>
-<arg>${response.json()}</arg>
-<arg>$.deck_id</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221205 13:33:47.879" level="INFO">${deck_id_new} = ['diwbiowky94s']</msg>
-<status status="PASS" starttime="20221205 13:33:47.852" endtime="20221205 13:33:47.880"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${deck_id_new}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:47.882" level="INFO">${deck_id_new} = ['diwbiowky94s']</msg>
-<status status="PASS" starttime="20221205 13:33:47.881" endtime="20221205 13:33:47.883"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:47.851" endtime="20221205 13:33:47.884"/>
-</kw>
-<kw name="Length Should Be" library="BuiltIn">
-<arg>${response.json()['deck_id']}</arg>
-<arg>12</arg>
-<doc>Verifies that the length of the given item is correct.</doc>
-<msg timestamp="20221205 13:33:47.885" level="INFO">Length is 12</msg>
-<status status="PASS" starttime="20221205 13:33:47.884" endtime="20221205 13:33:47.887"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:46.961" endtime="20221205 13:33:47.888"/>
-</kw>
-<kw name="Quando eu retirar uma quantidade &quot;${15}&quot; cartas" library="drawacard_steps" sourcename="Quando eu retirar uma quantidade &quot;${numero_de_cartas}&quot; cartas">
-<kw name="Evaluate" library="BuiltIn">
-<var>${deck_id_new}</var>
-<arg>"".join(${deck_id_new})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20221205 13:33:47.894" level="INFO">${deck_id_new} = diwbiowky94s</msg>
-<status status="PASS" starttime="20221205 13:33:47.893" endtime="20221205 13:33:47.895"/>
-</kw>
-<kw name="Remove String" library="String">
-<var>${deck_id_new}</var>
-<arg>${deck_id_new}</arg>
-<arg>[</arg>
-<arg>]</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<msg timestamp="20221205 13:33:47.898" level="INFO">${deck_id_new} = diwbiowky94s</msg>
-<status status="PASS" starttime="20221205 13:33:47.896" endtime="20221205 13:33:47.899"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}${deck_id_new}/draw/?count=${numero_de_cartas}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:48.220" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/diwbiowky94s/draw/?count=15 (redirected) 
- path_url=/api/deck/diwbiowky94s/draw/?count=15 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:48.222" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/diwbiowky94s/draw/?count=15 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:48 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=eBiEFYP3Pn8SkcfxFa8rVkZqW3nhipKtI1R8%2B08PjqmYFiBCDFbsf%2BBU75Od42RSXxS%2BNuCt66MFGaslcjBCkrggWwzmfQ1PkDnLrR456Nd9Zo%2BfzwejZIDHGrNF18BUk%2Fxyd1Bk9dFJFsU3FiETOK8%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f8418705a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "diwbiowky94s", "cards": [{"code": "AS", "image": "https://deckofcardsapi.com/static/img/AS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/AS.svg", "png": "https://deckofcardsapi.com/static/img/AS.png"}, "value": "ACE", "suit": "SPADES"}, {"code": "2S", "image": "https://deckofcardsapi.com/static/img/2S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/2S.svg", "png": "https://deckofcardsapi.com/static/img/2S.png"}, "value": "2", "suit": "SPADES"}, {"code": "3S", "image": "https://deckofcardsapi.com/static/img/3S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/3S.svg", "png": "https://deckofcardsapi.com/static/img/3S.png"}, "value": "3", "suit": "SPADES"}, {"code": "4S", "image": "https://deckofcardsapi.com/static/img/4S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/4S.svg", "png": "https://deckofcardsapi.com/static/img/4S.png"}, "value": "4", "suit": "SPADES"}, {"code": "5S", "image": "https://deckofcardsapi.com/static/img/5S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/5S.svg", "png": "https://deckofcardsapi.com/static/img/5S.png"}, "value": "5", "suit": "SPADES"}, {"code": "6S", "image": "https://deckofcardsapi.com/static/img/6S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/6S.svg", "png": "https://deckofcardsapi.com/static/img/6S.png"}, "value": "6", "suit": "SPADES"}, {"code": "7S", "image": "https://deckofcardsapi.com/static/img/7S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/7S.svg", "png": "https://deckofcardsapi.com/static/img/7S.png"}, "value": "7", "suit": "SPADES"}, {"code": "8S", "image": "https://deckofcardsapi.com/static/img/8S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/8S.svg", "png": "https://deckofcardsapi.com/static/img/8S.png"}, "value": "8", "suit": "SPADES"}, {"code": "9S", "image": "https://deckofcardsapi.com/static/img/9S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/9S.svg", "png": "https://deckofcardsapi.com/static/img/9S.png"}, "value": "9", "suit": "SPADES"}, {"code": "0S", "image": "https://deckofcardsapi.com/static/img/0S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/0S.svg", "png": "https://deckofcardsapi.com/static/img/0S.png"}, "value": "10", "suit": "SPADES"}, {"code": "JS", "image": "https://deckofcardsapi.com/static/img/JS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/JS.svg", "png": "https://deckofcardsapi.com/static/img/JS.png"}, "value": "JACK", "suit": "SPADES"}, {"code": "QS", "image": "https://deckofcardsapi.com/static/img/QS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/QS.svg", "png": "https://deckofcardsapi.com/static/img/QS.png"}, "value": "QUEEN", "suit": "SPADES"}, {"code": "KS", "image": "https://deckofcardsapi.com/static/img/KS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/KS.svg", "png": "https://deckofcardsapi.com/static/img/KS.png"}, "value": "KING", "suit": "SPADES"}, {"code": "AD", "image": "https://deckofcardsapi.com/static/img/aceDiamonds.png", "images": {"svg": "https://deckofcardsapi.com/static/img/aceDiamonds.svg", "png": "https://deckofcardsapi.com/static/img/aceDiamonds.png"}, "value": "ACE", "suit": "DIAMONDS"}, {"code": "2D", "image": "https://deckofcardsapi.com/static/img/2D.png", "images": {"svg": "https://deckofcardsapi.com/static/img/2D.svg", "png": "https://deckofcardsapi.com/static/img/2D.png"}, "value": "2", "suit": "DIAMONDS"}], "remaining": 37} 
- </msg>
-<msg timestamp="20221205 13:33:48.226" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:47.899" endtime="20221205 13:33:48.227"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:48.229" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:48.227" endtime="20221205 13:33:48.231"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${numero_de_cartas}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221205 13:33:48.233" level="INFO">${numero_de_cartas} = 15</msg>
-<status status="PASS" starttime="20221205 13:33:48.231" endtime="20221205 13:33:48.234"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${deck_id_new}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:48.236" level="INFO">${deck_id_new} = diwbiowky94s</msg>
-<status status="PASS" starttime="20221205 13:33:48.235" endtime="20221205 13:33:48.238"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:47.891" endtime="20221205 13:33:48.238"/>
-</kw>
-<kw name="E tentar adicionar carta(s) retirada(s) de um deck à uma pilha" library="addingtopiles_steps">
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}${deck_id_new}/pile/${pile_name1}/add/</arg>
-<arg>params=cards=${cards_to_add}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:48.560" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/diwbiowky94s/pile/pilha_de_higor1/add/?cards=AS (redirected) 
- path_url=/api/deck/diwbiowky94s/pile/pilha_de_higor1/add/?cards=AS 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:48.562" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/diwbiowky94s/pile/pilha_de_higor1/add/?cards=AS 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:48 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=2dfEufaFcxc29Zzvyj0mNKMRBYWmwBFJd29jWNCszBMY4melfXLfs3Ww2U2WxdQL7B0A0YitafRBUDzfJp4shewow4MHEwLk0R9PC8hVoJO%2FkWIOVhUyQIlpX2kh%2BwH67AZkgBLX3KI0UGEtH%2FsTgNc%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f864ace5a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "diwbiowky94s", "remaining": 37, "piles": {"pilha_de_higor1": {"remaining": 1}}} 
- </msg>
-<msg timestamp="20221205 13:33:48.564" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:48.242" endtime="20221205 13:33:48.565"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:48.567" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:48.566" endtime="20221205 13:33:48.569"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:48.240" endtime="20221205 13:33:48.570"/>
-</kw>
-<kw name="Então terei sucesso na adição" library="addingtopiles_steps">
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${response.json()['success']}</arg>
-<arg>${True}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221205 13:33:48.577" endtime="20221205 13:33:48.579"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>${response.json()['piles']['${pile_name1}']['remaining']} &gt; 0</arg>
-<arg>Pass Execution</arg>
-<arg>"Proceeding with the test!"</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Pass Execution" library="BuiltIn">
-<arg>"Proceeding with the test!"</arg>
-<doc>Skips rest of the current test, setup, or teardown with PASS status.</doc>
-<msg timestamp="20221205 13:33:48.583" level="INFO">Execution passed with message:
-"Proceeding with the test!"</msg>
-<status status="PASS" starttime="20221205 13:33:48.582" endtime="20221205 13:33:48.585"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:48.580" endtime="20221205 13:33:48.586"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:48.574" endtime="20221205 13:33:48.587"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:46.959" endtime="20221205 13:33:48.589">"Proceeding with the test!"</status>
-</test>
-<test id="s1-s1-s1-t2" name="CT-02 - Validar adição sem sucesso de cartas do deck, já adicionadas, a uma pilha" line="13">
-<kw name="Dado que eu possua um deck" library="shufflepiles_steps">
-<kw name="Dado que eu faça uma requisição GET na API Deck of Cards" library="abrandnewdeck_steps">
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}new/</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:48.938" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/new/ (redirected) 
- path_url=/api/deck/new/ 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:48.940" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/new/ 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:48 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=WHS5akYBAfWgreb3ft2WLipv6krYON6LRhhZBU5BY6xHlgb%2BnaHnThOYLwsLGio5Boe1JN8SDAQJ4U8zjNiK046Yqqg6FDneJV3gmLCVctWYrvcBayAbQ6gD8GSRmS%2FbUXaaP6dMt5DlAchkyl363is%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f889e175a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "3mlkqq2l0bld", "remaining": 52, "shuffled": false} 
- </msg>
-<msg timestamp="20221205 13:33:48.943" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:48.601" endtime="20221205 13:33:48.944"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:48.946" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:48.945" endtime="20221205 13:33:48.947"/>
-</kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${remaining_brandnew}</var>
-<arg>${response.json()}</arg>
-<arg>$.remaining</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221205 13:33:48.978" level="INFO">${remaining_brandnew} = [52]</msg>
-<status status="PASS" starttime="20221205 13:33:48.948" endtime="20221205 13:33:48.978"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${remaining_brandnew}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221205 13:33:48.980" level="INFO">${remaining_brandnew} = [52]</msg>
-<status status="PASS" starttime="20221205 13:33:48.979" endtime="20221205 13:33:48.981"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:48.599" endtime="20221205 13:33:48.981"/>
-</kw>
-<kw name="E pegar o valor do campo deck_id" library="abrandnewdeck_steps">
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${deck_id_new}</var>
-<arg>${response.json()}</arg>
-<arg>$.deck_id</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221205 13:33:49.006" level="INFO">${deck_id_new} = ['3mlkqq2l0bld']</msg>
-<status status="PASS" starttime="20221205 13:33:48.982" endtime="20221205 13:33:49.007"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${deck_id_new}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:49.009" level="INFO">${deck_id_new} = ['3mlkqq2l0bld']</msg>
-<status status="PASS" starttime="20221205 13:33:49.008" endtime="20221205 13:33:49.009"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:48.982" endtime="20221205 13:33:49.011"/>
-</kw>
-<kw name="Length Should Be" library="BuiltIn">
-<arg>${response.json()['deck_id']}</arg>
-<arg>12</arg>
-<doc>Verifies that the length of the given item is correct.</doc>
-<msg timestamp="20221205 13:33:49.012" level="INFO">Length is 12</msg>
-<status status="PASS" starttime="20221205 13:33:49.011" endtime="20221205 13:33:49.014"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:48.597" endtime="20221205 13:33:49.015"/>
-</kw>
-<kw name="Quando eu retirar uma quantidade &quot;${15}&quot; cartas" library="drawacard_steps" sourcename="Quando eu retirar uma quantidade &quot;${numero_de_cartas}&quot; cartas">
-<kw name="Evaluate" library="BuiltIn">
-<var>${deck_id_new}</var>
-<arg>"".join(${deck_id_new})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20221205 13:33:49.020" level="INFO">${deck_id_new} = 3mlkqq2l0bld</msg>
-<status status="PASS" starttime="20221205 13:33:49.019" endtime="20221205 13:33:49.022"/>
-</kw>
-<kw name="Remove String" library="String">
-<var>${deck_id_new}</var>
-<arg>${deck_id_new}</arg>
-<arg>[</arg>
-<arg>]</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<msg timestamp="20221205 13:33:49.025" level="INFO">${deck_id_new} = 3mlkqq2l0bld</msg>
-<status status="PASS" starttime="20221205 13:33:49.023" endtime="20221205 13:33:49.027"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}${deck_id_new}/draw/?count=${numero_de_cartas}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:49.376" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/3mlkqq2l0bld/draw/?count=15 (redirected) 
- path_url=/api/deck/3mlkqq2l0bld/draw/?count=15 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:49.377" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/3mlkqq2l0bld/draw/?count=15 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:49 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=a2wXDcbuU0JGgbLElI42uwVTgRBSU4XuAzGNlmmyytet4tlC3276ZnovePWr9HqRGPZIcBHUmuYHBEItKYb%2BVdYk65ZUtJ%2Fo2Gs293X6pIAk%2FIwAEo%2B34d8ZLe5ryOJDut%2BK2HbPE4x8a2cpqTLmmoY%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f8b39f25a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "3mlkqq2l0bld", "cards": [{"code": "AS", "image": "https://deckofcardsapi.com/static/img/AS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/AS.svg", "png": "https://deckofcardsapi.com/static/img/AS.png"}, "value": "ACE", "suit": "SPADES"}, {"code": "2S", "image": "https://deckofcardsapi.com/static/img/2S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/2S.svg", "png": "https://deckofcardsapi.com/static/img/2S.png"}, "value": "2", "suit": "SPADES"}, {"code": "3S", "image": "https://deckofcardsapi.com/static/img/3S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/3S.svg", "png": "https://deckofcardsapi.com/static/img/3S.png"}, "value": "3", "suit": "SPADES"}, {"code": "4S", "image": "https://deckofcardsapi.com/static/img/4S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/4S.svg", "png": "https://deckofcardsapi.com/static/img/4S.png"}, "value": "4", "suit": "SPADES"}, {"code": "5S", "image": "https://deckofcardsapi.com/static/img/5S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/5S.svg", "png": "https://deckofcardsapi.com/static/img/5S.png"}, "value": "5", "suit": "SPADES"}, {"code": "6S", "image": "https://deckofcardsapi.com/static/img/6S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/6S.svg", "png": "https://deckofcardsapi.com/static/img/6S.png"}, "value": "6", "suit": "SPADES"}, {"code": "7S", "image": "https://deckofcardsapi.com/static/img/7S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/7S.svg", "png": "https://deckofcardsapi.com/static/img/7S.png"}, "value": "7", "suit": "SPADES"}, {"code": "8S", "image": "https://deckofcardsapi.com/static/img/8S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/8S.svg", "png": "https://deckofcardsapi.com/static/img/8S.png"}, "value": "8", "suit": "SPADES"}, {"code": "9S", "image": "https://deckofcardsapi.com/static/img/9S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/9S.svg", "png": "https://deckofcardsapi.com/static/img/9S.png"}, "value": "9", "suit": "SPADES"}, {"code": "0S", "image": "https://deckofcardsapi.com/static/img/0S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/0S.svg", "png": "https://deckofcardsapi.com/static/img/0S.png"}, "value": "10", "suit": "SPADES"}, {"code": "JS", "image": "https://deckofcardsapi.com/static/img/JS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/JS.svg", "png": "https://deckofcardsapi.com/static/img/JS.png"}, "value": "JACK", "suit": "SPADES"}, {"code": "QS", "image": "https://deckofcardsapi.com/static/img/QS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/QS.svg", "png": "https://deckofcardsapi.com/static/img/QS.png"}, "value": "QUEEN", "suit": "SPADES"}, {"code": "KS", "image": "https://deckofcardsapi.com/static/img/KS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/KS.svg", "png": "https://deckofcardsapi.com/static/img/KS.png"}, "value": "KING", "suit": "SPADES"}, {"code": "AD", "image": "https://deckofcardsapi.com/static/img/aceDiamonds.png", "images": {"svg": "https://deckofcardsapi.com/static/img/aceDiamonds.svg", "png": "https://deckofcardsapi.com/static/img/aceDiamonds.png"}, "value": "ACE", "suit": "DIAMONDS"}, {"code": "2D", "image": "https://deckofcardsapi.com/static/img/2D.png", "images": {"svg": "https://deckofcardsapi.com/static/img/2D.svg", "png": "https://deckofcardsapi.com/static/img/2D.png"}, "value": "2", "suit": "DIAMONDS"}], "remaining": 37} 
- </msg>
-<msg timestamp="20221205 13:33:49.379" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:49.027" endtime="20221205 13:33:49.380"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:49.382" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:49.380" endtime="20221205 13:33:49.383"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${numero_de_cartas}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221205 13:33:49.384" level="INFO">${numero_de_cartas} = 15</msg>
-<status status="PASS" starttime="20221205 13:33:49.383" endtime="20221205 13:33:49.385"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${deck_id_new}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:49.387" level="INFO">${deck_id_new} = 3mlkqq2l0bld</msg>
-<status status="PASS" starttime="20221205 13:33:49.386" endtime="20221205 13:33:49.389"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:49.017" endtime="20221205 13:33:49.390"/>
-</kw>
-<kw name="E tentar adicionar 2x as mesmas carta(s) retirada(s) de um deck à uma pilha" library="addingtopiles_steps">
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}${deck_id_new}/pile/${pile_name1}/add/</arg>
-<arg>params=cards=${cards_to_add}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:49.725" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/3mlkqq2l0bld/pile/pilha_de_higor1/add/?cards=AS (redirected) 
- path_url=/api/deck/3mlkqq2l0bld/pile/pilha_de_higor1/add/?cards=AS 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:49.726" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/3mlkqq2l0bld/pile/pilha_de_higor1/add/?cards=AS 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:49 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=txufDas6eYpqSafsLdON8mSBrG7dHrVk0GI8RTRCsTV0Nj9q4VNV2RoDKdYbfnUvZkhApyHJvPtiZFLk25FPE5qvIJu%2BGboyFHnvCUHJMMsT27%2Flm0O9pkFWdEfobUKIhA%2Fk5uMAe3DMI%2BbiJjnamlQ%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f8d8d555a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "3mlkqq2l0bld", "remaining": 37, "piles": {"pilha_de_higor1": {"remaining": 1}}} 
- </msg>
-<msg timestamp="20221205 13:33:49.727" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:49.393" endtime="20221205 13:33:49.729"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response2}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}${deck_id_new}/pile/${pile_name2}/add/</arg>
-<arg>params=cards=${cards_to_add}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:50.062" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/3mlkqq2l0bld/pile/pilha_de_higor2/add/?cards=AS (redirected) 
- path_url=/api/deck/3mlkqq2l0bld/pile/pilha_de_higor2/add/?cards=AS 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:50.063" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/3mlkqq2l0bld/pile/pilha_de_higor2/add/?cards=AS 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:50 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=PB%2Bx%2BXX353TFOd2%2BMSy2sdASOIin%2BcyHUvHbGBb5TkBB7xccFoY7MNcAKUMWucvjroWdKINvaDJUoSIF5bZYROsKImDoe97vxC%2BqL188FmO6ccWg35oFAh5VqlH9QTvYrZp6Zg4%2BloV8lUgaUMlKHWU%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f8fa8395a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "3mlkqq2l0bld", "remaining": 37, "piles": {"pilha_de_higor1": {"remaining": 0}, "pilha_de_higor2": {"remaining": 1}}} 
- </msg>
-<msg timestamp="20221205 13:33:50.064" level="INFO">${response2} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:49.729" endtime="20221205 13:33:50.064"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:50.067" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:50.065" endtime="20221205 13:33:50.068"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response2}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:50.069" level="INFO">${response2} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:50.068" endtime="20221205 13:33:50.072"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:49.392" endtime="20221205 13:33:50.073"/>
-</kw>
-<kw name="Então não terei sucesso na adição de cartas do deck, já adicionadas, a uma pilha" library="addingtopiles_steps">
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${response.json()['success']}</arg>
-<arg>${True}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221205 13:33:50.077" endtime="20221205 13:33:50.079"/>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${response2.json()['success']}</arg>
-<arg>${True}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221205 13:33:50.079" endtime="20221205 13:33:50.080"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>${response.json()['piles']['${pile_name1}']['remaining']} &gt; ${response2.json()['piles']['${pile_name2}']['remaining']}</arg>
-<arg>Pass Execution</arg>
-<arg>"Proceeding with the test!"</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20221205 13:33:50.080" endtime="20221205 13:33:50.082"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:50.076" endtime="20221205 13:33:50.082"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:48.594" endtime="20221205 13:33:50.083"/>
-</test>
-<test id="s1-s1-s1-t3" name="CT-03 - Validar adição sem sucesso de cartas do deck a uma pilha sem nome" line="19">
-<kw name="Dado que eu possua um deck" library="shufflepiles_steps">
-<kw name="Dado que eu faça uma requisição GET na API Deck of Cards" library="abrandnewdeck_steps">
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}new/</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:50.423" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/new/ (redirected) 
- path_url=/api/deck/new/ 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:50.425" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/new/ 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:50 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=lPuljJiGCm7xGkpGIalt65L7qyTRtwnjMYJQdKe32UCOwx2dZXSOOWzJfew27bB7kwkDBDPw24Vo4UcowP0JFVJXFymHBUb0RnsqGpmoFaOS8jno3Wg9hgWnoul6iBbWMrDobco7VnxMDN8eWZEIa6M%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f91eb645a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "7hynbqn4eged", "remaining": 52, "shuffled": false} 
- </msg>
-<msg timestamp="20221205 13:33:50.426" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:50.092" endtime="20221205 13:33:50.428"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:50.429" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:50.428" endtime="20221205 13:33:50.430"/>
-</kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${remaining_brandnew}</var>
-<arg>${response.json()}</arg>
-<arg>$.remaining</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221205 13:33:50.459" level="INFO">${remaining_brandnew} = [52]</msg>
-<status status="PASS" starttime="20221205 13:33:50.431" endtime="20221205 13:33:50.460"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${remaining_brandnew}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221205 13:33:50.462" level="INFO">${remaining_brandnew} = [52]</msg>
-<status status="PASS" starttime="20221205 13:33:50.461" endtime="20221205 13:33:50.463"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:50.089" endtime="20221205 13:33:50.463"/>
-</kw>
-<kw name="E pegar o valor do campo deck_id" library="abrandnewdeck_steps">
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${deck_id_new}</var>
-<arg>${response.json()}</arg>
-<arg>$.deck_id</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221205 13:33:50.491" level="INFO">${deck_id_new} = ['7hynbqn4eged']</msg>
-<status status="PASS" starttime="20221205 13:33:50.465" endtime="20221205 13:33:50.493"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${deck_id_new}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:50.494" level="INFO">${deck_id_new} = ['7hynbqn4eged']</msg>
-<status status="PASS" starttime="20221205 13:33:50.493" endtime="20221205 13:33:50.495"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:50.464" endtime="20221205 13:33:50.495"/>
-</kw>
-<kw name="Length Should Be" library="BuiltIn">
-<arg>${response.json()['deck_id']}</arg>
-<arg>12</arg>
-<doc>Verifies that the length of the given item is correct.</doc>
-<msg timestamp="20221205 13:33:50.498" level="INFO">Length is 12</msg>
-<status status="PASS" starttime="20221205 13:33:50.496" endtime="20221205 13:33:50.500"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:50.087" endtime="20221205 13:33:50.500"/>
-</kw>
-<kw name="Quando eu retirar uma quantidade &quot;${15}&quot; cartas" library="drawacard_steps" sourcename="Quando eu retirar uma quantidade &quot;${numero_de_cartas}&quot; cartas">
-<kw name="Evaluate" library="BuiltIn">
-<var>${deck_id_new}</var>
-<arg>"".join(${deck_id_new})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20221205 13:33:50.507" level="INFO">${deck_id_new} = 7hynbqn4eged</msg>
-<status status="PASS" starttime="20221205 13:33:50.504" endtime="20221205 13:33:50.527"/>
-</kw>
-<kw name="Remove String" library="String">
-<var>${deck_id_new}</var>
-<arg>${deck_id_new}</arg>
-<arg>[</arg>
-<arg>]</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<msg timestamp="20221205 13:33:50.528" level="INFO">${deck_id_new} = 7hynbqn4eged</msg>
-<status status="PASS" starttime="20221205 13:33:50.527" endtime="20221205 13:33:50.535"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}${deck_id_new}/draw/?count=${numero_de_cartas}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:50.865" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/7hynbqn4eged/draw/?count=15 (redirected) 
- path_url=/api/deck/7hynbqn4eged/draw/?count=15 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:50.867" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/7hynbqn4eged/draw/?count=15 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:50 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=W2N9c9vGHL%2B0o5YIyU8mycHO5r%2B5%2FMgbPB%2FabarH02C648qWnipn7lmKB2xrpHZerClb3TyOUjdqLfrJZnwNW9mDGFbHwowPGxx0ndC2fGMgVEmDWfV9zm4%2BTaQGxC0qmsgrSVMTYT%2Bt3TDCADh8BoU%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f94af735a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "7hynbqn4eged", "cards": [{"code": "AS", "image": "https://deckofcardsapi.com/static/img/AS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/AS.svg", "png": "https://deckofcardsapi.com/static/img/AS.png"}, "value": "ACE", "suit": "SPADES"}, {"code": "2S", "image": "https://deckofcardsapi.com/static/img/2S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/2S.svg", "png": "https://deckofcardsapi.com/static/img/2S.png"}, "value": "2", "suit": "SPADES"}, {"code": "3S", "image": "https://deckofcardsapi.com/static/img/3S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/3S.svg", "png": "https://deckofcardsapi.com/static/img/3S.png"}, "value": "3", "suit": "SPADES"}, {"code": "4S", "image": "https://deckofcardsapi.com/static/img/4S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/4S.svg", "png": "https://deckofcardsapi.com/static/img/4S.png"}, "value": "4", "suit": "SPADES"}, {"code": "5S", "image": "https://deckofcardsapi.com/static/img/5S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/5S.svg", "png": "https://deckofcardsapi.com/static/img/5S.png"}, "value": "5", "suit": "SPADES"}, {"code": "6S", "image": "https://deckofcardsapi.com/static/img/6S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/6S.svg", "png": "https://deckofcardsapi.com/static/img/6S.png"}, "value": "6", "suit": "SPADES"}, {"code": "7S", "image": "https://deckofcardsapi.com/static/img/7S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/7S.svg", "png": "https://deckofcardsapi.com/static/img/7S.png"}, "value": "7", "suit": "SPADES"}, {"code": "8S", "image": "https://deckofcardsapi.com/static/img/8S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/8S.svg", "png": "https://deckofcardsapi.com/static/img/8S.png"}, "value": "8", "suit": "SPADES"}, {"code": "9S", "image": "https://deckofcardsapi.com/static/img/9S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/9S.svg", "png": "https://deckofcardsapi.com/static/img/9S.png"}, "value": "9", "suit": "SPADES"}, {"code": "0S", "image": "https://deckofcardsapi.com/static/img/0S.png", "images": {"svg": "https://deckofcardsapi.com/static/img/0S.svg", "png": "https://deckofcardsapi.com/static/img/0S.png"}, "value": "10", "suit": "SPADES"}, {"code": "JS", "image": "https://deckofcardsapi.com/static/img/JS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/JS.svg", "png": "https://deckofcardsapi.com/static/img/JS.png"}, "value": "JACK", "suit": "SPADES"}, {"code": "QS", "image": "https://deckofcardsapi.com/static/img/QS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/QS.svg", "png": "https://deckofcardsapi.com/static/img/QS.png"}, "value": "QUEEN", "suit": "SPADES"}, {"code": "KS", "image": "https://deckofcardsapi.com/static/img/KS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/KS.svg", "png": "https://deckofcardsapi.com/static/img/KS.png"}, "value": "KING", "suit": "SPADES"}, {"code": "AD", "image": "https://deckofcardsapi.com/static/img/aceDiamonds.png", "images": {"svg": "https://deckofcardsapi.com/static/img/aceDiamonds.svg", "png": "https://deckofcardsapi.com/static/img/aceDiamonds.png"}, "value": "ACE", "suit": "DIAMONDS"}, {"code": "2D", "image": "https://deckofcardsapi.com/static/img/2D.png", "images": {"svg": "https://deckofcardsapi.com/static/img/2D.svg", "png": "https://deckofcardsapi.com/static/img/2D.png"}, "value": "2", "suit": "DIAMONDS"}], "remaining": 37} 
- </msg>
-<msg timestamp="20221205 13:33:50.869" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:50.536" endtime="20221205 13:33:50.870"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:50.871" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:50.870" endtime="20221205 13:33:50.874"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${numero_de_cartas}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221205 13:33:50.876" level="INFO">${numero_de_cartas} = 15</msg>
-<status status="PASS" starttime="20221205 13:33:50.874" endtime="20221205 13:33:50.878"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${deck_id_new}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:50.880" level="INFO">${deck_id_new} = 7hynbqn4eged</msg>
-<status status="PASS" starttime="20221205 13:33:50.878" endtime="20221205 13:33:50.883"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:50.502" endtime="20221205 13:33:50.883"/>
-</kw>
-<kw name="E tentar adicionar carta(s) retirada(s) de um deck à uma pilha sem nome" library="addingtopiles_steps">
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}${deck_id_new}/pile//add/</arg>
-<arg>params=cards=${cards_to_add}</arg>
-<arg>expected_status=404</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:51.197" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/7hynbqn4eged/pile//add/?cards=AS (redirected) 
- path_url=/api/deck/7hynbqn4eged/pile//add/?cards=AS 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:51.199" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/7hynbqn4eged/pile/add/?cards=AS 
- status=404, reason=Not Found 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:51 GMT', 'Content-Type': 'text/html', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=eZje9aaWPMLizVb65QMycSeN5fffuumh%2B9DWboVjjNVQOFQFuo7gJDu9n%2BsXgaH%2F0EWpiCLIS%2FosmFcTb5WnrYlytD%2FJMXzoNB9cPG7XKDbaWyxIjum%2BU5qb7gtNNm37LcVW3X3HqQUUonRwsYxgoqs%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f96dafc5a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body=
-&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;title&gt;Not Found&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Not Found&lt;/h1&gt;&lt;p&gt;The requested resource was not found on this server.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
- 
- </msg>
-<msg timestamp="20221205 13:33:51.199" level="INFO">${response} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:50.886" endtime="20221205 13:33:51.200"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:51.201" level="INFO">${response} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:51.200" endtime="20221205 13:33:51.202"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:50.885" endtime="20221205 13:33:51.203"/>
-</kw>
-<kw name="Então não terei sucesso na adição de cartas do deck à uma pilha sem nome" library="addingtopiles_steps">
+<kw name="Quando eu verificar que o response tem status &quot;200&quot; e &quot;OK&quot;" library="abrandnewdeck_steps" sourcename="Quando eu verificar que o response tem status &quot;${sc}&quot; e &quot;${s}&quot;">
 <kw name="Status Should Be" library="RequestsLibrary">
-<arg>404</arg>
+<arg>${sc}</arg>
+<arg>${response}</arg>
 <doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20221205 13:33:51.206" endtime="20221205 13:33:51.207"/>
+<status status="PASS" starttime="20221206 17:44:01.123" endtime="20221206 17:44:01.125"/>
 </kw>
-<status status="PASS" starttime="20221205 13:33:51.203" endtime="20221205 13:33:51.208"/>
+<status status="PASS" starttime="20221206 17:44:01.120" endtime="20221206 17:44:01.126"/>
 </kw>
-<status status="PASS" starttime="20221205 13:33:50.085" endtime="20221205 13:33:51.209"/>
-</test>
-<test id="s1-s1-s1-t4" name="CT-04 - Validar adição sem sucesso de cartas que não estão no deck a uma pilha" line="25">
-<kw name="Dado que eu possua um deck" library="shufflepiles_steps">
-<kw name="Dado que eu faça uma requisição GET na API Deck of Cards" library="abrandnewdeck_steps">
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}new/</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:51.557" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/new/ (redirected) 
- path_url=/api/deck/new/ 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:51.558" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/new/ 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:51 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=d2L9KdJzwTwtB1TS8UCIASiHk6f2tJF0cGokuikUr5ppfINK2zR4JhDw5v1K%2FNa0nBE36miYg23hD07Gze8z8AzkvDKDC7QQkVQg%2BM%2BqVmaoi9N70OW%2BE%2F77klvOD46u3vSFRd1x3YvOO7HUme7LW%2Fc%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f98ddf55a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "y0jhzjuhs081", "remaining": 52, "shuffled": false} 
- </msg>
-<msg timestamp="20221205 13:33:51.560" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:51.216" endtime="20221205 13:33:51.561"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:51.564" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:51.562" endtime="20221205 13:33:51.565"/>
-</kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${remaining_brandnew}</var>
-<arg>${response.json()}</arg>
-<arg>$.remaining</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221205 13:33:51.593" level="INFO">${remaining_brandnew} = [52]</msg>
-<status status="PASS" starttime="20221205 13:33:51.565" endtime="20221205 13:33:51.595"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${remaining_brandnew}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221205 13:33:51.597" level="INFO">${remaining_brandnew} = [52]</msg>
-<status status="PASS" starttime="20221205 13:33:51.596" endtime="20221205 13:33:51.599"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:51.215" endtime="20221205 13:33:51.600"/>
-</kw>
-<kw name="E pegar o valor do campo deck_id" library="abrandnewdeck_steps">
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${deck_id_new}</var>
-<arg>${response.json()}</arg>
-<arg>$.deck_id</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221205 13:33:51.634" level="INFO">${deck_id_new} = ['y0jhzjuhs081']</msg>
-<status status="PASS" starttime="20221205 13:33:51.601" endtime="20221205 13:33:51.634"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${deck_id_new}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:51.636" level="INFO">${deck_id_new} = ['y0jhzjuhs081']</msg>
-<status status="PASS" starttime="20221205 13:33:51.635" endtime="20221205 13:33:51.636"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:51.600" endtime="20221205 13:33:51.636"/>
-</kw>
-<kw name="Length Should Be" library="BuiltIn">
-<arg>${response.json()['deck_id']}</arg>
-<arg>12</arg>
-<doc>Verifies that the length of the given item is correct.</doc>
-<msg timestamp="20221205 13:33:51.639" level="INFO">Length is 12</msg>
-<status status="PASS" starttime="20221205 13:33:51.636" endtime="20221205 13:33:51.644"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:51.214" endtime="20221205 13:33:51.644"/>
-</kw>
-<kw name="Quando eu retirar uma quantidade &quot;${1}&quot; cartas" library="drawacard_steps" sourcename="Quando eu retirar uma quantidade &quot;${numero_de_cartas}&quot; cartas">
-<kw name="Evaluate" library="BuiltIn">
-<var>${deck_id_new}</var>
-<arg>"".join(${deck_id_new})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20221205 13:33:51.649" level="INFO">${deck_id_new} = y0jhzjuhs081</msg>
-<status status="PASS" starttime="20221205 13:33:51.647" endtime="20221205 13:33:51.650"/>
-</kw>
-<kw name="Remove String" library="String">
-<var>${deck_id_new}</var>
-<arg>${deck_id_new}</arg>
-<arg>[</arg>
-<arg>]</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<msg timestamp="20221205 13:33:51.652" level="INFO">${deck_id_new} = y0jhzjuhs081</msg>
-<status status="PASS" starttime="20221205 13:33:51.650" endtime="20221205 13:33:51.654"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}${deck_id_new}/draw/?count=${numero_de_cartas}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:51.981" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/y0jhzjuhs081/draw/?count=1 (redirected) 
- path_url=/api/deck/y0jhzjuhs081/draw/?count=1 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:51.982" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/y0jhzjuhs081/draw/?count=1 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:51 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=ptJW%2FMptBKaxxjGnQ6rR9dIu4yzSHZot56Mkf%2BLk6GXrnFI%2FZS%2FENTN0njzHuCFI8kRcEOl4E7%2F2upXom02f8%2B4Y7mcjz8tfdx9Sptb4ggsOILubrTcl1r%2BwuReBWgJ12jcv%2BMhEHn1IsZFPnvNwLvE%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f9ba91a5a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "y0jhzjuhs081", "cards": [{"code": "AS", "image": "https://deckofcardsapi.com/static/img/AS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/AS.svg", "png": "https://deckofcardsapi.com/static/img/AS.png"}, "value": "ACE", "suit": "SPADES"}], "remaining": 51} 
- </msg>
-<msg timestamp="20221205 13:33:51.983" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:51.654" endtime="20221205 13:33:51.984"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:51.985" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:51.984" endtime="20221205 13:33:51.986"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${numero_de_cartas}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221205 13:33:51.988" level="INFO">${numero_de_cartas} = 1</msg>
-<status status="PASS" starttime="20221205 13:33:51.986" endtime="20221205 13:33:51.991"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${deck_id_new}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:51.994" level="INFO">${deck_id_new} = y0jhzjuhs081</msg>
-<status status="PASS" starttime="20221205 13:33:51.992" endtime="20221205 13:33:51.996"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:51.645" endtime="20221205 13:33:51.996"/>
-</kw>
-<kw name="E tentar adicionar carta(s) que não estão no deck à uma pilha" library="addingtopiles_steps">
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}${deck_id_new}/pile/${pile_name1}/add/</arg>
-<arg>params=cards=2S</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:52.319" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/y0jhzjuhs081/pile/pilha_de_higor1/add/?cards=2S (redirected) 
- path_url=/api/deck/y0jhzjuhs081/pile/pilha_de_higor1/add/?cards=2S 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:52.320" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/y0jhzjuhs081/pile/pilha_de_higor1/add/?cards=2S 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:52 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=D9tUqXDnz3nKovnnlOkp3VDmdQS8LuA3rmF4lvJB558Dfmk%2FQI0cxXY9TGE9WM60z0S1l%2FiyGzPQcPhhsUAZ99BF2oeMQEqsSoFbeC4BVVD8gqeK1U6Hitkoiqu59TUe%2B1mAOPwuUyGShnz1O1KF1bI%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f9dcb705a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "y0jhzjuhs081", "remaining": 51, "piles": {"pilha_de_higor1": {"remaining": 0}}} 
- </msg>
-<msg timestamp="20221205 13:33:52.321" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:51.998" endtime="20221205 13:33:52.324"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:52.327" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:52.326" endtime="20221205 13:33:52.328"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:51.997" endtime="20221205 13:33:52.328"/>
-</kw>
-<kw name="Então não terei sucesso na adição da carta(s) que não estão no deck à uma pilha" library="addingtopiles_steps">
+<kw name="Então devo ter sucesso nas respostas dos campos da requisição de deck parcial" library="apartialdeck_steps">
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>${response.json()['success']}</arg>
 <arg>${True}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221205 13:33:52.331" endtime="20221205 13:33:52.333"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>${response.json()['piles']['${pile_name1}']['remaining']} == 0</arg>
-<arg>Pass Execution</arg>
-<arg>"Proceeding with the test!"</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Pass Execution" library="BuiltIn">
-<arg>"Proceeding with the test!"</arg>
-<doc>Skips rest of the current test, setup, or teardown with PASS status.</doc>
-<msg timestamp="20221205 13:33:52.336" level="INFO">Execution passed with message:
-"Proceeding with the test!"</msg>
-<status status="PASS" starttime="20221205 13:33:52.335" endtime="20221205 13:33:52.338"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:52.334" endtime="20221205 13:33:52.339"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:52.329" endtime="20221205 13:33:52.341"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:51.211" endtime="20221205 13:33:52.342">"Proceeding with the test!"</status>
-</test>
-<test id="s1-s1-s1-t5" name="CT-05 - Validar adição sem sucesso de cartas de um deck inexistente a uma pilha" line="31">
-<kw name="Dado que eu possua um deck" library="shufflepiles_steps">
-<kw name="Dado que eu faça uma requisição GET na API Deck of Cards" library="abrandnewdeck_steps">
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}new/</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:52.679" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/new/ (redirected) 
- path_url=/api/deck/new/ 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:52.680" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/new/ 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:52 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=MBPoeD4km%2BZ%2F3rfyst7tkTVvSoi7SJpyxGmt8zO70IeQey9jRTWEO7FwfhQE%2BJAUthrrhxTp8gj4hPnHFVo%2Bbb%2Fbbz1MlQJOX4u%2BtTQq7WR8Jxrfn5p5CZfb4PqWoYJpKR8zyiRx75NtyWdRmPAedHQ%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2f9ffe775a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "rtogm1isaw2c", "remaining": 52, "shuffled": false} 
- </msg>
-<msg timestamp="20221205 13:33:52.681" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:52.351" endtime="20221205 13:33:52.682"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:52.683" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:52.682" endtime="20221205 13:33:52.684"/>
-</kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${remaining_brandnew}</var>
-<arg>${response.json()}</arg>
-<arg>$.remaining</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221205 13:33:52.713" level="INFO">${remaining_brandnew} = [52]</msg>
-<status status="PASS" starttime="20221205 13:33:52.685" endtime="20221205 13:33:52.714"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${remaining_brandnew}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221205 13:33:52.715" level="INFO">${remaining_brandnew} = [52]</msg>
-<status status="PASS" starttime="20221205 13:33:52.714" endtime="20221205 13:33:52.717"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:52.349" endtime="20221205 13:33:52.717"/>
-</kw>
-<kw name="E pegar o valor do campo deck_id" library="abrandnewdeck_steps">
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${deck_id_new}</var>
-<arg>${response.json()}</arg>
-<arg>$.deck_id</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221205 13:33:52.744" level="INFO">${deck_id_new} = ['rtogm1isaw2c']</msg>
-<status status="PASS" starttime="20221205 13:33:52.719" endtime="20221205 13:33:52.745"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${deck_id_new}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:52.746" level="INFO">${deck_id_new} = ['rtogm1isaw2c']</msg>
-<status status="PASS" starttime="20221205 13:33:52.745" endtime="20221205 13:33:52.748"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:52.718" endtime="20221205 13:33:52.749"/>
+<status status="PASS" starttime="20221206 17:44:01.128" endtime="20221206 17:44:01.132"/>
 </kw>
 <kw name="Length Should Be" library="BuiltIn">
 <arg>${response.json()['deck_id']}</arg>
 <arg>12</arg>
 <doc>Verifies that the length of the given item is correct.</doc>
-<msg timestamp="20221205 13:33:52.750" level="INFO">Length is 12</msg>
-<status status="PASS" starttime="20221205 13:33:52.749" endtime="20221205 13:33:52.752"/>
+<msg timestamp="20221206 17:44:01.136" level="INFO">Length is 12</msg>
+<status status="PASS" starttime="20221206 17:44:01.133" endtime="20221206 17:44:01.138"/>
 </kw>
-<status status="PASS" starttime="20221205 13:33:52.347" endtime="20221205 13:33:52.753"/>
-</kw>
-<kw name="Quando eu retirar uma quantidade &quot;${1}&quot; cartas" library="drawacard_steps" sourcename="Quando eu retirar uma quantidade &quot;${numero_de_cartas}&quot; cartas">
-<kw name="Evaluate" library="BuiltIn">
-<var>${deck_id_new}</var>
-<arg>"".join(${deck_id_new})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20221205 13:33:52.758" level="INFO">${deck_id_new} = rtogm1isaw2c</msg>
-<status status="PASS" starttime="20221205 13:33:52.757" endtime="20221205 13:33:52.760"/>
-</kw>
-<kw name="Remove String" library="String">
-<var>${deck_id_new}</var>
-<arg>${deck_id_new}</arg>
-<arg>[</arg>
-<arg>]</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<msg timestamp="20221205 13:33:52.761" level="INFO">${deck_id_new} = rtogm1isaw2c</msg>
-<status status="PASS" starttime="20221205 13:33:52.760" endtime="20221205 13:33:52.763"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}${deck_id_new}/draw/?count=${numero_de_cartas}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:53.083" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/rtogm1isaw2c/draw/?count=1 (redirected) 
- path_url=/api/deck/rtogm1isaw2c/draw/?count=1 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:53.084" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/rtogm1isaw2c/draw/?count=1 
- status=200, reason=OK 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=2cW%2BkO9N6MtVeMR6t8gqKfs6oavxNxl0vdxwSpfT4ON90mOMIxEN1A7zxhWoQ6Eo%2B3345JBcVO6ixAJuWVEa6WtaCDKjWxSI14spIJRdyb%2FYf%2FFQBHJ2Q3GB8cViDviVjR7EecMXFFe%2Fd%2BkIBQLgNuE%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2fa2891c5a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": true, "deck_id": "rtogm1isaw2c", "cards": [{"code": "AS", "image": "https://deckofcardsapi.com/static/img/AS.png", "images": {"svg": "https://deckofcardsapi.com/static/img/AS.svg", "png": "https://deckofcardsapi.com/static/img/AS.png"}, "value": "ACE", "suit": "SPADES"}], "remaining": 51} 
- </msg>
-<msg timestamp="20221205 13:33:53.085" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:52.763" endtime="20221205 13:33:53.086"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
 <arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:53.087" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:53.086" endtime="20221205 13:33:53.089"/>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20221206 17:44:01.138" endtime="20221206 17:44:01.143"/>
 </kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${numero_de_cartas}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221205 13:33:53.092" level="INFO">${numero_de_cartas} = 1</msg>
-<status status="PASS" starttime="20221205 13:33:53.090" endtime="20221205 13:33:53.094"/>
+<status status="PASS" starttime="20221206 17:44:01.127" endtime="20221206 17:44:01.145"/>
 </kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${deck_id_new}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:53.095" level="INFO">${deck_id_new} = rtogm1isaw2c</msg>
-<status status="PASS" starttime="20221205 13:33:53.094" endtime="20221205 13:33:53.097"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:52.754" endtime="20221205 13:33:53.097"/>
-</kw>
-<kw name="E tentar adicionar carta(s) de um deck inexistente à uma pilha" library="addingtopiles_steps">
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${alias}</arg>
-<arg>url=${baseurl}${deck_id_new}2/pile/${pile_name1}/add/</arg>
-<arg>params=${cards_to_add}</arg>
-<arg>expected_status=404</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221205 13:33:53.425" level="INFO">GET Request : url=http://deckofcardsapi.com/api/deck/rtogm1isaw2c2/pile/pilha_de_higor1/add/?AS (redirected) 
- path_url=/api/deck/rtogm1isaw2c2/pile/pilha_de_higor1/add/?AS 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221205 13:33:53.426" level="INFO">GET Response : url=https://deckofcardsapi.com/api/deck/rtogm1isaw2c2/pile/pilha_de_higor1/add/?AS 
- status=404, reason=Not Found 
- headers={'Date': 'Mon, 05 Dec 2022 16:33:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY', 'Vary': 'Origin', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=YbbVEFF247DGbQEpxJECzRMs0ie0QsJPOIXpS8Yq5xPiAN8zrgbv34n8TWZtIBvV6%2Fvis0U%2BpOVbwguDBrkDUScvAcSCGvhxk7RVcM9VWcmFgMBWwAMc9EqNzYBrFf76vDBYNJOGfHhlTbprGYm9TJY%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '774e2fa4bb505a6a-IAD', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
- body={"success": false, "error": "Deck ID does not exist."} 
- </msg>
-<msg timestamp="20221205 13:33:53.427" level="INFO">${response} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:53.101" endtime="20221205 13:33:53.428"/>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20221205 13:33:53.430" level="INFO">${response} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20221205 13:33:53.429" endtime="20221205 13:33:53.431"/>
-</kw>
-<status status="PASS" starttime="20221205 13:33:53.099" endtime="20221205 13:33:53.431"/>
-</kw>
-<kw name="Então não terei sucesso na adição da carta(s) de um deck inexistente à uma pilha" library="addingtopiles_steps">
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${response.json()['success']}</arg>
-<arg>${False}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221205 13:33:53.433" endtime="20221205 13:33:53.435"/>
-</kw>
-<kw name="Should Have Value In Json" library="JSONLibrary">
+<kw name="E pegar o valor do campo deck_id_partial" library="apartialdeck_steps">
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${deck_id_parcial}</var>
 <arg>${response.json()}</arg>
-<arg>$.error</arg>
-<doc>Should Have Value In JSON using JSONPath</doc>
-<status status="PASS" starttime="20221205 13:33:53.435" endtime="20221205 13:33:53.463"/>
+<arg>$.deck_id</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20221206 17:44:01.234" level="INFO">${deck_id_parcial} = ['6yxp8lzmkgrl']</msg>
+<status status="PASS" starttime="20221206 17:44:01.170" endtime="20221206 17:44:01.235"/>
 </kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${response.json()['error']}</arg>
-<arg>Deck ID does not exist.</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221205 13:33:53.463" endtime="20221205 13:33:53.465"/>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${deck_id_parcial}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20221206 17:44:01.236" level="INFO">${deck_id_parcial} = ['6yxp8lzmkgrl']</msg>
+<status status="PASS" starttime="20221206 17:44:01.235" endtime="20221206 17:44:01.237"/>
 </kw>
-<status status="PASS" starttime="20221205 13:33:53.432" endtime="20221205 13:33:53.465"/>
+<status status="PASS" starttime="20221206 17:44:01.168" endtime="20221206 17:44:01.237"/>
 </kw>
-<status status="PASS" starttime="20221205 13:33:52.345" endtime="20221205 13:33:53.466"/>
+<status status="PASS" starttime="20221206 17:43:59.939" endtime="20221206 17:44:01.238"/>
 </test>
 <doc>Esse arquivo contém os cenários de teste da API pública Deck of Cards</doc>
-<status status="PASS" starttime="20221205 13:33:46.729" endtime="20221205 13:33:53.471"/>
+<status status="PASS" starttime="20221206 17:43:59.779" endtime="20221206 17:44:01.240"/>
 </suite>
-<status status="PASS" starttime="20221205 13:33:46.718" endtime="20221205 13:33:53.479"/>
+<status status="PASS" starttime="20221206 17:43:59.773" endtime="20221206 17:44:01.245"/>
 </suite>
-<status status="PASS" starttime="20221205 13:33:46.663" endtime="20221205 13:33:53.486"/>
+<status status="PASS" starttime="20221206 17:43:59.743" endtime="20221206 17:44:01.250"/>
 </suite>
 <statistics>
 <total>
-<stat pass="5" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="5" fail="0" skip="0" id="s1" name="Deckofcards">Deckofcards</stat>
-<stat pass="5" fail="0" skip="0" id="s1-s1" name="Tests">Deckofcards.Tests</stat>
-<stat pass="5" fail="0" skip="0" id="s1-s1-s1" name="Addingtopiles Tc">Deckofcards.Tests.Addingtopiles Tc</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Deckofcards">Deckofcards</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">Deckofcards.Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Apartialdeck Tc">Deckofcards.Tests.Apartialdeck Tc</stat>
 </suite>
 </statistics>
 <errors>
