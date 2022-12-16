@@ -4,7 +4,7 @@ Resource                    ../services.robot
 
 *** Keywords ***
 #CT-01
-Quando eu retirar uma quantidade "${numero_de_cartas}" cartas
+Quando eu retirar uma quantidade "${numero_de_cartas}" cartas do deck
     ${deck_id_new}          Evaluate                "".join(${deck_id_new})
     ${deck_id_new}          Remove String           ${deck_id_new}           [         ]
     ${response}             GET on Session          ${alias}                 url=${baseurl}${deck_id_new}/draw/?count=${numero_de_cartas}

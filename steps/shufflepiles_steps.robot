@@ -19,4 +19,7 @@ E verificar que o response tem status "${sc}" e "${s}"
     Request Should Be Successful                    ${response}
 
 Então devo ter um deck_id diferente do anterior
-    Should Not Be Equal     ${deck_id_new}          ${deck_id_shuffled}
+    Should Not Be Equal     ${deck_id_new}          ${deck_id_shuffled}    
+    
+Então não terei sucesso na mistura
+    Então não terei sucesso na remistura
