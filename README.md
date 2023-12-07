@@ -1,4 +1,4 @@
-# deck-of-cards
+# Deck of cards
 EN-US
 It is an test automation built with the Python language and Robot Framework framework, referring to a public API, about decks of playing cards (https://deckofcardsapi.com/) built by crobertsbmw (https://github.com/crobertsbmw/deckofcards).
 
